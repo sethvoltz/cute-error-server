@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= status %> – Error</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    :root {
+      --bg: #fff6fb;
+      --bg-gradient: #ffeef1;
+      --text-primary: #d63384;
+      --text-secondary: #b03060;
+      --shadow: rgba(255, 182, 193, 0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1e1b1e;
+        --bg-gradient: #2b252a;
+        --text-primary: #f18cb6;
+        --text-secondary: #f3c0d9;
+        --shadow: rgba(255, 105, 180, 0.3);
+      }
+    }
+
+    body {
+      background: linear-gradient(to bottom, var(--bg), var(--bg-gradient));
+      font-family: 'Quicksand', sans-serif;
+      color: var(--text-primary);
+      text-align: center;
+      margin: 0;
+      padding: 4rem 1rem;
+      min-height: 100svh;
+    }
+
+    h1 {
+      font-size: 6rem;
+      font-weight: 600;
+      margin: 0 0 0.3em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 1.5rem;
+    }
+
+    .kitten {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 30px var(--shadow);
+      margin-bottom: 2rem;
+      animation: floaty 3s ease-in-out infinite;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <%- body %>
+</body>
+</html>

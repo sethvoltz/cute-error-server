@@ -1,0 +1,6 @@
+npm-debug.log
+Dockerfile
+*.DS_Store
+examples
+.github
+.vscode
