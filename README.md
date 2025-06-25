@@ -87,7 +87,7 @@ On error, the service will try to render (in order):
 2. /data/custom/default/<status>.ejs
 3. /app/views/built-in/<status>.ejs
 
-Built-in 404 and 503 templates are included.
+Built-in 404, 502 and 503 templates are included.
 
 
 ## 💻 Development
