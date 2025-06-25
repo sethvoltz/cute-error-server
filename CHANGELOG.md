@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/sethvoltz/cute-error-server/compare/v1.0.0...v1.1.0) (2025-06-25)
+
+
+### Features
+
+* add logging, remove status echo ([0ee8848](https://github.com/sethvoltz/cute-error-server/commit/0ee8848420ae2e7040f345b86575c353fbd2761a))
+
 ## 1.0.0 (2025-06-25)
 
 
