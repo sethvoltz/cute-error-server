@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/sethvoltz/cute-error-server/compare/v1.1.0...v1.2.0) (2025-06-25)
+
+
+### Features
+
+* add 502 error page ([3c46872](https://github.com/sethvoltz/cute-error-server/commit/3c46872976b1e02fc31a5ee881ba41a29138a912))
+
 ## [1.1.0](https://github.com/sethvoltz/cute-error-server/compare/v1.0.0...v1.1.0) (2025-06-25)
 
 
