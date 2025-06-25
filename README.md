@@ -29,31 +29,54 @@ Add this service to your stack to handle errors from any service behind Traefik.
 ```yaml
 services:
   cute-error-server:
+    depends_on:
+      - traefik
+    container_name: cute-error-server
     image: ghcr.io/sethvoltz/cute-error-server:latest
+    restart: unless-stopped
     volumes:
       - ./custom-pages:/data/custom:ro
     networks:
       - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.cute-error-server.loadbalancer.server.port=8080"
-      - "traefik.http.middlewares.error-middleware.errors.status=400-599"
-      - "traefik.http.middlewares.error-middleware.errors.service=cute-error-server"
-      - "traefik.http.middlewares.error-middleware.errors.query=/{status}"
-      - "traefik.http.middlewares.error-middleware.errors.passHostHeader=true"
+      - "traefik.http.routers.cute-error-server-rtr.entrypoints=https"
+      - "traefik.http.routers.cute-error-server-rtr.rule=Host(`errors.example.com`)"
+      - "traefik.http.routers.cute-error-server-rtr.service=cute-error-server-svc"
+      - "traefik.http.services.cute-error-server-svc.loadbalancer.server.port=8080"
+      - "traefik.http.middlewares.errors-middleware.errors.status=502,503"
+      - "traefik.http.middlewares.errors-middleware.errors.service=cute-error-server-svc"
+      - "traefik.http.middlewares.errors-middleware.errors.query=/{status}"
+```
+
+Then add the middleware to your services:
+
+```yaml
+services:
+  my-service:
+    # ...
+    labels:
+      # ...
+      - "traefik.http.routers.my-service-rtr.middlewares=errors-middleware@docker"
 ```
 
 Optionally, you can add an HTTPBin test container to ensure it is working:
 
 ```yaml
+services:
   httpbin:
+    container_name: httpbin
     image: kennethreitz/httpbin:latest
+    restart: unless-stopped
     networks:
       - traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.httpbin.rule=Host(`httpbin.example.com`)"
-      - "traefik.http.services.httpbin.loadbalancer.server.port=80"
+      - "traefik.http.routers.httpbin-rtr.entrypoints=https"
+      - "traefik.http.routers.httpbin-rtr.rule=Host(`httpbin.example.com`)"
+      - "traefik.http.routers.httpbin-rtr.middlewares=errors-middleware@docker"
+      - "traefik.http.routers.httpbin-rtr.service=httpbin-svc"
+      - "traefik.http.services.httpbin-svc.loadbalancer.server.port=80"
 ```
 
 ## 📂 Template Lookup Order
