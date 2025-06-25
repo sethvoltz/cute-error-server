@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import expressLayouts from "express-ejs-layouts";
+import morgan from "morgan";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -10,6 +11,8 @@ const CUSTOM_VIEWS = "/data/custom";
 const BUILTIN_VIEWS = path.join(__dirname, "views", "built-in");
 
 const app = express();
+
+app.use(morgan("combined"));
 
 app.set("views", [CUSTOM_VIEWS, BUILTIN_VIEWS]);
 app.set("view engine", "ejs");
@@ -34,7 +37,7 @@ app.get("/:status", (req, res) => {
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) {
       const relPath = path.relative(app.get("views")[0], candidate);
-      return res.status(Number(status)).render(relPath, {
+      return res.render(relPath, {
         status,
         host: host || 'this service',
         timestamp: new Date().toISOString()

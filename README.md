@@ -43,6 +43,18 @@ services:
       - "traefik.http.middlewares.error-middleware.errors.passHostHeader=true"
 ```
 
+Optionally, you can add an HTTPBin test container to ensure it is working:
+
+```yaml
+  httpbin:
+    image: kennethreitz/httpbin:latest
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.httpbin.rule=Host(`httpbin.example.com`)"
+      - "traefik.http.services.httpbin.loadbalancer.server.port=80"
+```
 
 ## 📂 Template Lookup Order
 
