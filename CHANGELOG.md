@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/sethvoltz/cute-error-server/compare/v1.2.0...v1.2.1) (2025-07-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency morgan to v1.10.1 ([96b3c93](https://github.com/sethvoltz/cute-error-server/commit/96b3c936926fb5f42da4c4aa0b1a57c00e31affd))
+
 ## [1.2.0](https://github.com/sethvoltz/cute-error-server/compare/v1.1.0...v1.2.0) (2025-06-25)
 
 
