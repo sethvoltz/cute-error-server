@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/sethvoltz/cute-error-server/compare/v1.2.1...v1.3.0) (2025-07-26)
+
+
+### Features
+
+* add auto-merge to release-please PRs ([5aaa528](https://github.com/sethvoltz/cute-error-server/commit/5aaa528823ce8e6a4a3309df535e8aac7f5b8623))
+
 ## [1.2.1](https://github.com/sethvoltz/cute-error-server/compare/v1.2.0...v1.2.1) (2025-07-18)
 
 
