@@ -1,5 +1,5 @@
 # Build
-FROM node:22-slim AS builder
+FROM node:26-slim AS builder
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ RUN npm install --production
 COPY . .
 
 # Final
-FROM node:22-slim
+FROM node:26-slim
 
 WORKDIR /app
 
